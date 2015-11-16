@@ -1,0 +1,17 @@
+C:\Projets\animationWeb\croteaujAnim\ExamenFinal\GameLauncher\GameLauncher\bin\Debug\GameLauncher.exe.config
+C:\Projets\Personnel\GameLauncher\GameLauncher\bin\Debug\GameLauncher.exe.config
+C:\Projets\Personnel\GameLauncher\GameLauncher\obj\Debug\GameLauncher.csprojResolveAssemblyReference.cache
+C:\Projets\Personnel\GameLauncher\GameLauncher\obj\Debug\GameLauncher.FormGameTimeCalculator.resources
+C:\Projets\Personnel\GameLauncher\GameLauncher\obj\Debug\GameLauncher.Properties.Resources.resources
+C:\Projets\Personnel\GameLauncher\GameLauncher\obj\Debug\GameLauncher.csproj.GenerateResource.Cache
+C:\Projets\Personnel\GameLauncher\GameLauncher\bin\Debug\GameLauncher.exe
+C:\Projets\Personnel\GameLauncher\GameLauncher\bin\Debug\GameLauncher.pdb
+C:\Projets\Personnel\GameLauncher\GameLauncher\obj\Debug\GameLauncher.exe
+C:\Projets\Personnel\GameLauncher\GameLauncher\obj\Debug\GameLauncher.pdb
+C:\Projets\Personnel\GameLauncher\GameLauncher\bin\Debug\GameLauncher.exe.manifest
+C:\Projets\Personnel\GameLauncher\GameLauncher\bin\Debug\GameLauncher.application
+C:\Projets\Personnel\GameLauncher\GameLauncher\obj\Debug\GameLauncher.exe.manifest
+C:\Projets\Personnel\GameLauncher\GameLauncher\obj\Debug\GameLauncher.application
+F:\Projets\Personnel\GameLauncher\GameLauncher\bin\Debug\GameLauncher.exe.config
+F:\Projets\Personnel\GameLauncher\GameLauncher\obj\Debug\GameLauncher.exe
+F:\Projets\Personnel\GameLauncher\GameLauncher\obj\Debug\GameLauncher.pdb
