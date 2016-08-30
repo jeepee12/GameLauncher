@@ -36,7 +36,7 @@ namespace GameLauncher
             nomDesJeux[(int)listeJeux.UnrealTournament] = "UnrealTournament";
             nomDesJeux[(int)listeJeux.VirtualPlaytable] = "VirtualPlaytable";
             nomDesJeux[(int)listeJeux.Worms] = "Worms Revolution";
-            nomDesJeux[(int)listeJeux.Bf3] = "libre";//removed
+            nomDesJeux[(int)listeJeux.Bf3] = "The Crew";//removed and changed
             nomDesJeux[(int)listeJeux.Burnout] = "Factorio";//changed
             nomDesJeux[(int)listeJeux.C2] = "libre";//removed
             nomDesJeux[(int)listeJeux.DS3] = "libre";//removed
@@ -71,7 +71,7 @@ namespace GameLauncher
             tabLogiciel[(int)listeJeux.UnrealTournament].UrlRacourcis = @".\\racourcis\\UnrealTournament.exe - Raccourci";
             tabLogiciel[(int)listeJeux.VirtualPlaytable].UrlRacourcis = @".\\racourcis\\Virtual Playtable";
             tabLogiciel[(int)listeJeux.Worms].UrlRacourcis = @"steam://rungameid/200170";
-            tabLogiciel[(int)listeJeux.Bf3].UrlRacourcis = @".\\racourcis\\libre";
+            tabLogiciel[(int)listeJeux.Bf3].UrlRacourcis = @"uplay://launch/413/0";
             tabLogiciel[(int)listeJeux.Burnout].UrlRacourcis = @".\\racourcis\\Factorio";
             tabLogiciel[(int)listeJeux.C2].UrlRacourcis = @".\\racourcis\\libre";
             tabLogiciel[(int)listeJeux.DS3].UrlRacourcis = @".\\racourcis\\libre";
@@ -116,8 +116,8 @@ namespace GameLauncher
             tabLogiciel[(int)listeJeux.Smite].NbMinutes = 27;
 
             tabLogiciel[(int)listeJeux.SC2].NbJours = 19;
-            tabLogiciel[(int)listeJeux.SC2].NbHeures = 13;
-            tabLogiciel[(int)listeJeux.SC2].NbMinutes = 14;
+            tabLogiciel[(int)listeJeux.SC2].NbHeures = 14;
+            tabLogiciel[(int)listeJeux.SC2].NbMinutes = 31;
 
             tabLogiciel[(int)listeJeux.Age2].NbJours = 2;
             tabLogiciel[(int)listeJeux.Age2].NbHeures = 0;
@@ -135,7 +135,7 @@ namespace GameLauncher
             tabLogiciel[(int)listeJeux.Burnout].NbMinutes = 8;
 
             tabLogiciel[(int)listeJeux.HearthStone].NbJours = 30;
-            tabLogiciel[(int)listeJeux.HearthStone].NbJours = 0;
+            tabLogiciel[(int)listeJeux.HearthStone].NbHeures = 0;
             tabLogiciel[(int)listeJeux.HearthStone].NbMinutes = 14;
 
             tabLogiciel[(int)listeJeux.MoH].NbHeures = 12;
