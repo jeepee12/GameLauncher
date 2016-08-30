@@ -15,7 +15,10 @@ namespace GameLauncher
     public partial class FormGameTimeCalculator : Form
     {
         EnsembleDesDonnees leJeu;
-        private string nomFichier = @".\\tritor\\temps.jouer";
+        //La nouvelle facon de faire pour avoir le sync avec dropbox, c'est de mettre le fichier du logiciel
+        //dans le meme dossier que le fichier de sauvegarde directement dans dropbox.
+        //Ensuite, faire un racourcis vers la nouvelle version du programme.
+        private string nomFichier = @".\\temps.jouer";
         private int jeuSelectionne;
 
 
@@ -72,8 +75,9 @@ namespace GameLauncher
 
         private void Jeu_Click(object sender, EventArgs e)
         {
+            SauvegarderNomEtUrl();
             Control jeuCliquer = (Control)sender;
-            jeuSelectionne = tableLayoutPanel.GetRow(jeuCliquer)*10 + tableLayoutPanel.GetColumn(jeuCliquer);
+            jeuSelectionne = tableLayoutPanel.GetRow(jeuCliquer) * 10 + tableLayoutPanel.GetColumn(jeuCliquer);
             Actualiser();
         }
 
@@ -91,6 +95,12 @@ namespace GameLauncher
             imgJeuSelectionne.Image = imageListIcone.Images[jeuSelectionne];
             txtUrl.Text = leJeu.TabLogiciel[jeuSelectionne].UrlRacourcis;
             Refresh();
+        }
+
+        private void SauvegarderNomEtUrl()
+        {
+            leJeu.TabLogiciel[jeuSelectionne].Nom = txtNom.Text;
+            leJeu.TabLogiciel[jeuSelectionne].UrlRacourcis = txtUrl.Text;
         }
 
         private void Minuterie_Tick(object sender, EventArgs e)
@@ -116,15 +126,11 @@ namespace GameLauncher
 
         private void Sauvegarder()
         {
-            SaveFileDialog dialogue = new SaveFileDialog();
+            SauvegarderNomEtUrl();
             BinaryFormatter formateur = new BinaryFormatter();
-            dialogue.Title = "Enregistrer sous";
-            dialogue.FileName = "temps.jouer";
-            dialogue.Filter = "Fichier Jouer|*.jouer";
-            dialogue.ShowDialog();
             try
             {
-                Stream flux = dialogue.OpenFile();
+                Stream flux = new FileStream(nomFichier, FileMode.OpenOrCreate);
                 formateur.Serialize(flux, leJeu);
                 flux.Close();
             }
@@ -137,44 +143,49 @@ namespace GameLauncher
 
         private void btnJouer_Click(object sender, EventArgs e)
         {
-            
+            bool gameFailedTolaunch = false;
             try
             {
-                for (int i = 0; i < tableLayoutPanel.RowCount; i++)
-                {
-                    for (int j = 0; j < tableLayoutPanel.ColumnCount; j++)
-                    {
-                        RadioButton boutton = (RadioButton)tableLayoutPanel.GetControlFromPosition(j,i);
-                        boutton.Enabled = false;
-                    }
-                }
+                System.Diagnostics.Process.Start(leJeu.TabLogiciel[jeuSelectionne].UrlRacourcis);
             }
-            catch
+            catch (Exception ex)
             {
+                gameFailedTolaunch = true;
+                MessageBox.Show("Incable de lancer le jeu!!! Erreur:" + ex.Message);
             }
-            //TODO mettre cette ligne la dans le try pour pas que ça crash si ça veut pas lancer
-            System.Diagnostics.Process.Start(leJeu.TabLogiciel[jeuSelectionne].UrlRacourcis);
-            Minuterie.Enabled = true;
-            btnArret.Enabled = true;
-            btnJouer.Enabled = false;
-            Actualiser();
-        }
-
-        private void btnArret_Click(object sender, EventArgs e)
-        {
-            try
+            if (!gameFailedTolaunch)
             {
                 for (int i = 0; i < tableLayoutPanel.RowCount; i++)
                 {
                     for (int j = 0; j < tableLayoutPanel.ColumnCount; j++)
                     {
                         RadioButton boutton = (RadioButton)tableLayoutPanel.GetControlFromPosition(j, i);
+                        if (boutton != null)
+                        {
+                            boutton.Enabled = false;
+                        }
+                    }
+                }
+                Minuterie.Enabled = true;
+                btnArret.Enabled = true;
+                btnJouer.Enabled = false;
+                Actualiser();
+            }
+        }
+
+        private void btnArret_Click(object sender, EventArgs e)
+        {
+            //Si ça crash sur un boutton remettre un try catch sur la boucle(c'est pas propre mais ça marche)
+            for (int i = 0; i < tableLayoutPanel.RowCount; i++)
+            {
+                for (int j = 0; j < tableLayoutPanel.ColumnCount; j++)
+                {
+                    RadioButton boutton = (RadioButton)tableLayoutPanel.GetControlFromPosition(j, i);
+                    if (boutton != null)
+                    {
                         boutton.Enabled = true;
                     }
                 }
-            }
-            catch
-            {
             }
 
             Minuterie.Enabled = false;
@@ -185,12 +196,12 @@ namespace GameLauncher
 
         private void btnChangerUrl_Click(object sender, EventArgs e)
         {
-            leJeu.TabLogiciel[jeuSelectionne].UrlRacourcis = txtUrl.Text;
+            SauvegarderNomEtUrl();
         }
 
         private void btnChangerNom_Click(object sender, EventArgs e)
         {
-            leJeu.TabLogiciel[jeuSelectionne].Nom = txtNom.Text;
+            SauvegarderNomEtUrl();
         }
 
         private void enregistrerToolStripMenuItem_Click(object sender, EventArgs e)
