@@ -1,5 +1,5 @@
 # GameLauncher
-Programme pour voir mes temps de jeux. / Program to see my gaming time.
+Program to see my gaming time.
 
 ## TODOs
 
